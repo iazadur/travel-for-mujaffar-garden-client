@@ -1,4 +1,3 @@
-import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -9,9 +8,4 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID
 };
 
-// Initialize Firebase
-const initializeAuthentication = () => {
-    return initializeApp(firebaseConfig)
-}
-
-export default initializeAuthentication;
+export default firebaseConfig

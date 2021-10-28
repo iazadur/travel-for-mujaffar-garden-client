@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import GridLoader from "react-spinners/GridLoader";
-import useAuth from '../hooks/useAuth';
+import useAuth from '../Hooks/useAuth';
 
 const override = css`
   display: block;
