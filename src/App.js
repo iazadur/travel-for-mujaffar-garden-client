@@ -8,6 +8,7 @@ import Login from './Pages/Login/Login';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import ServicePage from './Pages/ServicePage/ServicePage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <OrderProvider>
           <Switch>
           <Route exact path="/"><Home></Home></Route>
+          <Route exact path="/service"><ServicePage></ServicePage></Route>
           <PublicRoute path="/signin"><Login /></PublicRoute>
           <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute>
 

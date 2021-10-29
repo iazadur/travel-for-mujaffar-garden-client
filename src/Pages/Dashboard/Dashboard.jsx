@@ -1,8 +1,12 @@
-import React from 'react';
-import Button from '../../Components/From/Button';
+import React, { useState } from 'react';
+import AddNewService from '../../Components/AddNewService/AddNewService';
 import Header from '../../Components/Header/Header';
+import ManageAllOrders from '../../Components/ManageAllOrders/ManageAllOrders';
+import MyOrders from '../../Components/MyOrders/MyOrders';
 
 const Dashboard = () => {
+    const [control, setControl] = useState("myOrders")
+    const buttonStyle = 'bg-gray-900 hover:text-white text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-start'
     return (
         <>
             <Header></Header>
@@ -19,9 +23,12 @@ const Dashboard = () => {
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
                                     <div className="border-4 borderborder-gray-200 rounded-lg h-96">
-                                        <Button text="My Order"/>
-                                        <Button text="My Order"/>
-                                        <Button text="My Order"/>
+                                        <div className="flex flex-col justify-center space-y-2">
+                                            <button className={buttonStyle} onClick={() => setControl("myOrders")}>My orders</button>
+                                            <button className={buttonStyle} onClick={() => setControl("allOrders")}>Manage All Orders</button>
+                                            <button className={buttonStyle} onClick={() => setControl("newService")}>Add New Service</button>
+
+                                        </div>
                                     </div>
                                 </div>
                                 {/* /End replace */}
@@ -31,7 +38,11 @@ const Dashboard = () => {
                             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
-                                    <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
+                                    <div className="border-4 border-dashed border-gray-200 rounded-lg h-auto">
+                                        {control === 'myOrders' && <MyOrders />}
+                                        {control === 'allOrders' && <ManageAllOrders />}
+                                        {control === 'newService' && <AddNewService />}
+                                    </div>
                                 </div>
                                 {/* /End replace */}
                             </div>
