@@ -6,6 +6,8 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 // import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
+import PrivateRoute from './Routes/PrivateRoute';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 const App = () => {
   return (
@@ -15,6 +17,7 @@ const App = () => {
           <Switch>
           <Route exact path="/"><Home></Home></Route>
           <PublicRoute path="/signin"><Login /></PublicRoute>
+          <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute>
 
             {/* <Route exact path="/"><HomeScreen /></Route>
             <Route exact path="/contact"><ContactScreen /></Route>
