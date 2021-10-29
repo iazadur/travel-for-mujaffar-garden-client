@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import Hero from '../../Components/Hero/Hero';
 import Services from '../../Components/Services/Services';
@@ -10,7 +11,7 @@ const Home = () => {
            <Header />
            <Hero />
            <Services />
-           {/* <slider></slider> */}
+           <Footer />
         </>
     );
 };

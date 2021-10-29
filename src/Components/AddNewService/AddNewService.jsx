@@ -6,9 +6,9 @@ import swal from 'sweetalert';
 
 const AddNewService = () => {
     const img = [
-        "https://i.ibb.co/MNMdMc6/Boat.png",
+        "",
         "https://i.ibb.co/B2pPsCn/supper-delux-seminar.png",
-        "https://i.ibb.co/s2qNjMY/zoo1.png",
+        "",
         "https://i.ibb.co/VNb84Fd/Vip-12.png",
         "https://i.ibb.co/R4QCmz0/why-moon-11.png"
     ]
@@ -16,7 +16,6 @@ const AddNewService = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const url = 'http://localhost:5000/addService'
     const onSubmit = data => {
-        console.log(data);
         axios.post(url, data)
             .then((res) => {
                 if (res.data.insertedId) {
