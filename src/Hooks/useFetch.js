@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = (file) => {
+const useFetch = (url) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(`/database/${file}.json`)
+        fetch(url)
         .then(res => res.json())
             .then(data => setData(data))
-    },[file])
+    },[url])
 
     return [data]
 }
