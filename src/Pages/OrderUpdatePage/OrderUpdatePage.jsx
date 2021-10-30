@@ -1,39 +1,38 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Select from "react-select";
+import { Controller, useForm } from 'react-hook-form';
+import { useParams } from 'react-router';
+import swal from 'sweetalert';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
-import { useParams } from 'react-router';
-import axios from 'axios';
-import useAuth from '../../Hooks/useAuth';
-import { useForm } from 'react-hook-form';
-import swal from 'sweetalert';
 
-const BookNowPage = () => {
-    const { user } = useAuth()
-    const [service, setService] = useState({})
+const OrderUpdatePage = () => {
+
+    const [order, setOrder] = useState({})
     const { id } = useParams()
-    const url = `http://localhost:5000/bookNow/${id}`
+    const url = `http://localhost:5000/updateOrders/${id}`
     useEffect(() => {
         axios.get(url)
-            .then(res => setService(res.data))
+            .then(res => setOrder(res.data))
     }, [url])
-    const { Title, Image, Description, btnColor, Price } = service
+    console.log(order);
+    const { serviceName, serviceId, status, fromDate, toDate, name, email, phone, address, servicePrice, img } = order
 
-    const { register, handleSubmit,reset } = useForm();
+    const { register, handleSubmit, control } = useForm();
     const onSubmit = data => {
-        data.img = user.photoURL
-        data.serviceName = Title
-        data.servicePrice = Price
-        data.serviceId = id
-        data.status = false
-        data.roll = false
-        axios.post('http://localhost:5000/addOrder',data)
-        .then(res=>{
-            if (res.data.insertedId) {
-                reset() 
-                swal("Good job!", "SuccessFully Confirm your order!", "success");
-            }
-        })
+        axios.post('http://localhost:5000/addOrder', data)
+            .then(res => {
+                if (res.data.insertedId) {
+
+                    const final = swal("SuccessFully Confirm your order !")
+                    console.log(final);
+                }
+            })
     };
+
+    const colourOptions = [{ value: "true", label: "Active" },
+    { value: "false", label: "Pending" }]
 
     return (
         <>
@@ -51,21 +50,21 @@ const BookNowPage = () => {
 
                         <div className="md:col-span-1">
                             <div className="px-4 sm:px-0">
-                                <h3 className="text-2xl font-bold text-center leading-6 text-indigo-900 ">Your Service</h3>
+                                <h3 className="text-2xl font-bold text-center leading-6 text-indigo-900 ">Order item</h3>
                                 <div className="h-1 w-20 bg-indigo-700 mx-auto mt-3"></div>
                                 <p className="mt-1 text-sm text-gray-600 mx-3">
 
                                     <div className="space-y-3 bg-white border border-gray-200 hover:shadow-xl transition duration-700 ease-in-out transform hover:scale-102 box-border rounded-xl my-8">
-                                        <img className="w-full" src={Image} alt={Title} />
-                                        <div className="space-y-3 p-4 divide-y divide-indigo-200 ">
-                                            <h1 className="text-gray-600 poppins text-xl">{Title}</h1>
 
-                                            <p className="text-gray-500 pt-2 ">{Description}</p>
+                                        <div className="space-y-3 p-4 divide-y divide-indigo-200 ">
+                                            <h1 className="text-gray-600 poppins text-xl">{serviceName}</h1>
+
+
 
                                             <div className="flex justify-between pt-3">
 
 
-                                                <h3 style={{ color: `${btnColor}` }}>$ {Price}</h3>
+                                                <h3>Price: $ {servicePrice}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -78,15 +77,34 @@ const BookNowPage = () => {
                                 <div className="shadow overflow-hidden sm:rounded-md">
                                     <div className="px-4 py-5 bg-white sm:p-6">
                                         <div className="grid grid-cols-6 gap-6">
-                                            <div className="col-span-6 ">
+                                            <div className="col-span-6 md:col-span-4 ">
                                                 <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
                                                     Full name
                                                 </label>
                                                 <input {...register("name", { required: true })}
                                                     type="text"
-                                                    defaultValue={user.displayName}
+                                                    defaultValue={name}
                                                     className="mt-1 focus:ring-indigo-600 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
+                                            </div>
+                                            <div className="col-span-6 sm:col-span-2">
+                                                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                                    Order Status
+                                                </label>
+                                                <select
+                                                    defaultValue={status}
+                                                    {...register("status", { required: true })}
+                                                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                >
+
+                                                    {status ? <option value="true" selected>Active</option> : <option value="true">Active</option>}
+                                                    {status ? <option value="false">pending</option> : <option value="false" selected>Pending</option>}
+
+                                                </select>
+
+
+
+
                                             </div>
 
 
@@ -97,7 +115,7 @@ const BookNowPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    defaultValue={user.email}
+                                                    defaultValue={email}
                                                     {...register("email", { required: true })}
                                                     className="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
@@ -108,24 +126,13 @@ const BookNowPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    defaultValue={phone}
                                                     {...register("phone", { required: true })}
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
                                             </div>
 
-                                            <div className="col-span-6 sm:col-span-3">
-                                                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                                    Gender
-                                                </label>
-                                                <select
-                                                    {...register("gender", { required: true })}
-                                                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                >
-                                                    <option value="female">female</option>
-                                                    <option value="male">male</option>
-                                                    <option value="other">other</option>
-                                                </select>
-                                            </div>
+
 
                                             <div className="col-span-6">
                                                 <label htmlFor="street-address" className="block text-sm font-medium text-gray-700">
@@ -133,6 +140,7 @@ const BookNowPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    defaultValue={address}
                                                     {...register("address", { required: true })}
                                                     autoComplete="street-address"
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
@@ -145,6 +153,7 @@ const BookNowPage = () => {
                                                 </label>
                                                 <input
                                                     type="date"
+                                                    defaultValue={fromDate}
                                                     {...register("fromDate", { required: true })}
                                                     autoComplete="address-level2"
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
@@ -157,6 +166,7 @@ const BookNowPage = () => {
                                                 </label>
                                                 <input
                                                     type="date"
+                                                    defaultValue={toDate}
                                                     {...register("toDate", { required: true })}
                                                     autoComplete="address-level1"
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
@@ -183,6 +193,8 @@ const BookNowPage = () => {
             <Footer></Footer>
         </>
     );
+
+
 };
 
-export default BookNowPage;
+export default OrderUpdatePage;

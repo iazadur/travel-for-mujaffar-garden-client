@@ -16,14 +16,20 @@ const MyOrders = () => {
     }, [url])
 
     const handleDelete = (id) =>{
-        swal("Are you sure to delete?")
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Order!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
         .then(() => {
             axios.delete(`http://localhost:5000/orders/${id}`)
             .then(res=>{
                 if (res.data.deletedCount > 0) {
-                    swal('deleted successfully');
                     const remainingUsers = orders.filter(user => user._id !== id);
                     setOrders(remainingUsers);
+                    swal("Good job!", "deleted successfully!", "success");
                 }
             })
         })

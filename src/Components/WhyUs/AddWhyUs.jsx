@@ -26,7 +26,7 @@ const AddWhyUs = () => {
             <Heading text="Add Why Us"></Heading>
 
             
-            <div className="container mx-auto py-52 " >
+            <div className="container mx-auto my-10" >
                 <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center flex-col">
 
                     <input {...register("Title", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Title" />
