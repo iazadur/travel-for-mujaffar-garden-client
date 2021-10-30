@@ -21,7 +21,6 @@ const Services = () => {
     }, [])
 
 
-    console.log(services);
     return (
         <section className="max-w-screen-xl mx-auto px-6 py-6 pb-24">
             {/* heading  */}

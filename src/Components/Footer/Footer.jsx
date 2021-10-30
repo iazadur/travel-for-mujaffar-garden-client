@@ -9,7 +9,7 @@ const FooterLink = ({text})=>{
 
 const FooterTitle = ({text}) => {
     return(
-        <h3 className="font-base font-bold text-gray-700 ">{text}</h3>
+        <h3 className="font-base font-bold text-indigo-900 ">{text}</h3>
     )
 }
 
@@ -19,22 +19,22 @@ const Footer = () => {
             <div className="pb-20 pt-52 bg-gray-100">
                 <div className="container mx-auto">
 
-                    <div class="grid grid-cols-5 gap-4">
-                        <div class="col-span-2 space-y-3
+                    <div className="grid grid-cols-5 gap-4">
+                        <div className="col-span-2 space-y-3
                         space-x-4 flex flex-col divide-y">
-                            <h3 className="text-xl font-bold">MOZAFFAR GARDEN AND RESORT</h3>
-                            <p>Kharibila, Satkhira -9400</p>
+                            <h3 className="text-xl font-bold text-indigo-900">MOZAFFAR GARDEN AND RESORT</h3>
+                            <p className="text-sm font-semibold text-gray-600">Kharibila, Satkhira -9400</p>
                             
-                            <a href="tel:+8801991666031">
+                            <a className="text-sm font-semibold text-gray-600"  href="tel:+8801991666031">
                             Mobile:+88 01719769009, 01701003010
                             </a>
-                            <a href="mailto:iamazadur@gmail.com">Emai:info@mozaffar-resort.com</a>
-                            <a href="https://iazadur.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <a className="text-sm font-semibold text-gray-600" href="mailto:iamazadur@gmail.com">Emai:info@mozaffar-resort.com</a>
+                            <a className="text-sm font-semibold text-gray-600"  href="https://iazadur.netlify.app/" target="_blank" rel="noopener noreferrer">
                             www.mozaffarresort.com
                             </a>
 
                         </div>
-                        <div class="space-y-3
+                        <div className="space-y-3
                         space-x-4 flex flex-col divide-y">
                             
                              <FooterTitle text="OUR AGENCY" />
@@ -45,7 +45,7 @@ const Footer = () => {
                             <FooterLink text="Tourism" />
                             <FooterLink text="Payment" />
                         </div>
-                        <div class="space-y-3
+                        <div className="space-y-3
                         space-x-4 flex flex-col divide-y">
                             
                             <FooterTitle text="PARTNERS" />
@@ -56,7 +56,7 @@ const Footer = () => {
                             <FooterLink text="Trivago" />
                             <FooterLink text="TripAdvisor" />
                         </div>
-                        <div class="space-y-3
+                        <div className="space-y-3
                         space-x-4 flex flex-col divide-y">
                             <FooterTitle text="LAST MINUTE" />
                             <FooterLink text="London" />

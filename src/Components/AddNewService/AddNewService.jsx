@@ -12,14 +12,13 @@ const AddNewService = () => {
         "https://i.ibb.co/VNb84Fd/Vip-12.png",
         "https://i.ibb.co/R4QCmz0/why-moon-11.png"
     ]
-    console.log(img);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const url = 'http://localhost:5000/addService'
     const onSubmit = data => {
         axios.post(url, data)
             .then((res) => {
                 if (res.data.insertedId) {
-                    reset(res.data)
+                    reset()
                     swal("New Services Added Successfully!")
                 }
             })

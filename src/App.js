@@ -9,6 +9,7 @@ import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import ServicePage from './Pages/ServicePage/ServicePage';
+import BookNowPage from './Pages/BookNowPage/BookNowPage';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path="/service"><ServicePage></ServicePage></Route>
           <PublicRoute path="/signin"><Login /></PublicRoute>
           <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute>
+          <PrivateRoute path="/bookNow/:id"><BookNowPage /></PrivateRoute>
 
             {/* <Route exact path="/"><HomeScreen /></Route>
             <Route exact path="/contact"><ContactScreen /></Route>

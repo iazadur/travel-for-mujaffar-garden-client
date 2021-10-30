@@ -2,17 +2,17 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import Heading from '../From/Heading';
+import swal from 'sweetalert';
 
 const AddWhyUs = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const url = 'http://localhost:5000/addwhyUs'
     const onSubmit = data => {
-      console.log(data);
       axios.post(url, data)
         .then((res) => {
           if (res.data.insertedId) {
-            alert('Service added successfully')
-            reset(res.data)
+            swal('Service added successfully')
+            reset()
           }
         })
         .catch(function (error) {

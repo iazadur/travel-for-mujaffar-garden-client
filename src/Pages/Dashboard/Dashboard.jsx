@@ -18,8 +18,8 @@ const Dashboard = () => {
             </header>
             <main>
                 <div className="container mx-auto">
-                    <div class="grid md:grid-cols-4 gap-4">
-                        <div class="col">
+                    <div className="grid md:grid-cols-4 gap-4">
+                        <div className="col">
                             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
@@ -28,7 +28,7 @@ const Dashboard = () => {
                                             <button className={buttonStyle} onClick={() => setControl("myOrders")}>My orders</button>
                                             <button className={buttonStyle} onClick={() => setControl("allOrders")}>Manage All Orders</button>
                                             <button className={buttonStyle} onClick={() => setControl("newService")}>Add New Service</button>
-                                            <button className={buttonStyle} onClick={() => setControl("AddWhyUs")}>Add New Service</button>
+                                            <button className={buttonStyle} onClick={() => setControl("AddWhyUs")}>Add Why Us</button>
 
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@ const Dashboard = () => {
                                 {/* /End replace */}
                             </div>
                         </div>
-                        <div class="md:col-span-3">
+                        <div className="md:col-span-3">
                             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
