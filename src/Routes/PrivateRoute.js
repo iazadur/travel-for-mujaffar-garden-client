@@ -15,7 +15,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     if (isLoading) {
         return (
             <div className="flex flex-col items-center justify-center h-screen">
-                <GridLoader color="#1d4ed8" css={override} size={25} />
+                <GridLoader color="#14b9d5" css={override} size={25} />
 
             </div>
         )

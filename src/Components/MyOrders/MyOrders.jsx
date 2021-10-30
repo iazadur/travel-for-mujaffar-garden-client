@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
-import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
+import {  AiOutlineDelete } from 'react-icons/ai'
 import swal from 'sweetalert';
 
 const MyOrders = () => {
@@ -111,7 +111,7 @@ const MyOrders = () => {
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap flex justify-center items-center">
 
-                                                <AiFillEdit className="text-indigo-600 font-extrabold text-2xl hover:text-indigo-900 ml-3" />
+                                               
                                                 <AiOutlineDelete onClick={() => handleDelete(order._id)} className="text-red-600 cursor-pointer font-extrabold text-2xl hover:text-red-900 ml-3" />
 
 

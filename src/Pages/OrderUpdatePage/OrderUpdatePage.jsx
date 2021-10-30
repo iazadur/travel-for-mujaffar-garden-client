@@ -1,38 +1,41 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Select from "react-select";
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import swal from 'sweetalert';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 
 const OrderUpdatePage = () => {
-
     const [order, setOrder] = useState({})
+    const { register, handleSubmit,reset } = useForm({
+        defaultValues: order,
+    });
     const { id } = useParams()
     const url = `http://localhost:5000/updateOrders/${id}`
     useEffect(() => {
         axios.get(url)
-            .then(res => setOrder(res.data))
-    }, [url])
-    console.log(order);
-    const { serviceName, serviceId, status, fromDate, toDate, name, email, phone, address, servicePrice, img } = order
-
-    const { register, handleSubmit, control } = useForm();
-    const onSubmit = data => {
-        axios.post('http://localhost:5000/addOrder', data)
             .then(res => {
-                if (res.data.insertedId) {
+                setOrder(res.data)
+                reset(res.data)
+            })
+            
+    }, [reset,url])
+    const { serviceName, status, servicePrice } = order
 
-                    const final = swal("SuccessFully Confirm your order !")
-                    console.log(final);
+    
+    const onSubmit = data => {
+        console.log(data);
+        const url = `http://localhost:5000/updateOrder/${id}`
+        axios.put(url, data)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    swal("Good job!", "Updated SuccessFully!", "success");
                 }
             })
     };
 
-    const colourOptions = [{ value: "true", label: "Active" },
-    { value: "false", label: "Pending" }]
+
 
     return (
         <>
@@ -81,9 +84,8 @@ const OrderUpdatePage = () => {
                                                 <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
                                                     Full name
                                                 </label>
-                                                <input {...register("name", { required: true })}
+                                                <input {...register("name",)}
                                                     type="text"
-                                                    defaultValue={name}
                                                     className="mt-1 focus:ring-indigo-600 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
                                             </div>
@@ -92,7 +94,6 @@ const OrderUpdatePage = () => {
                                                     Order Status
                                                 </label>
                                                 <select
-                                                    defaultValue={status}
                                                     {...register("status", { required: true })}
                                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                 >
@@ -115,8 +116,7 @@ const OrderUpdatePage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    defaultValue={email}
-                                                    {...register("email", { required: true })}
+                                                    {...register("email",)}
                                                     className="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
                                             </div>
@@ -126,8 +126,7 @@ const OrderUpdatePage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    defaultValue={phone}
-                                                    {...register("phone", { required: true })}
+                                                    {...register("phone",)}
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
                                             </div>
@@ -140,8 +139,7 @@ const OrderUpdatePage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    defaultValue={address}
-                                                    {...register("address", { required: true })}
+                                                    {...register("address",)}
                                                     autoComplete="street-address"
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
@@ -153,8 +151,7 @@ const OrderUpdatePage = () => {
                                                 </label>
                                                 <input
                                                     type="date"
-                                                    defaultValue={fromDate}
-                                                    {...register("fromDate", { required: true })}
+                                                    {...register("fromDate",)}
                                                     autoComplete="address-level2"
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
@@ -166,8 +163,7 @@ const OrderUpdatePage = () => {
                                                 </label>
                                                 <input
                                                     type="date"
-                                                    defaultValue={toDate}
-                                                    {...register("toDate", { required: true })}
+                                                    {...register("toDate",)}
                                                     autoComplete="address-level1"
                                                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2"
                                                 />
