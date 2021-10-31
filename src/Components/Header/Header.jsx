@@ -17,13 +17,13 @@ const Header = () => {
 
     const navigation = [
         { name: 'dashboard' },
-        { name: 'service'},
-        { name: 'about'},
+        { name: 'service' },
+        { name: 'about' },
 
     ]
 
 
-    
+
     return (
         <>
 
@@ -168,35 +168,35 @@ const Header = () => {
                                 </div>
                             </div>
 
-                            <Disclosure.Panel className="md:hidden">
+                             <Disclosure.Panel className="md:hidden">
                                 <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
                                     {navigation.map((item) => (
-                                         <Disclosure.Button
-                                         key={item.name}
-                                         className="block rounded-md text-base font-medium capitalize"
-                                         >
+                                        <Disclosure.Button
+                                            key={item.name}
+                                            className="block rounded-md text-base font-medium capitalize"
+                                        >
 
-                                        <Link
-                                            to={`/${item.name}`}
-                                            className={
-                                                window.location.pathname === `/${item.name}` ? 'bg-gray-900 text-gray-300 rounded-md px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md  "
+                                            <Link
+                                                to={`/${item.name}`}
+                                                className={
+                                                    window.location.pathname === `/${item.name}` ? 'bg-gray-900 text-gray-300 rounded-md px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md  "
 
-                                            }
+                                                }
 
-                                        >{item.name}</Link>
+                                            >{item.name}</Link>
                                         </Disclosure.Button>
                                     ))}
 
-                                    
+
                                 </div>
-                                <div className="pt-4 pb-3 border-t border-gray-700">
+                                {user?.email ? <div className="pt-4 pb-3 border-t border-gray-700">
                                     <div className="flex items-center px-5">
                                         <div className="flex-shrink-0">
                                             <img className="h-10 w-10 rounded-full" src={user.photoURL} alt="" />
                                         </div>
                                         <div className="ml-3">
-                                            <div className="text-base font-medium leading-none text-white">{user.displayName}</div>
-                                            <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
+                                            <div className="text-md font-medium leading-none text-gray-700">{user.displayName}</div>
+                                            <div className="text-sm font-medium leading-none text-indigo-400">{user.email}</div>
                                         </div>
                                         <button
                                             type="button"
@@ -208,28 +208,23 @@ const Header = () => {
                                     </div>
                                     <div className="mt-3 px-2 space-y-1">
 
-                                        <Disclosure.Button
+                                        <button
+                                            onClick={logOut}
+                                            className=" px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 flex ">
+                                            <GrLogout className="mr-2 mt-1" />Sign Out
+                                        </button>
 
-                                            as="Link"
-                                            onclick={logOut}
 
-                                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                                        >
-                                            My Order
-                                        </Disclosure.Button>
-                                        {/* {userNavigation.map((item) => (
-                                        <Disclosure.Button
-                                            key={item.name}
-                                            as="Link"
-                                            onclick={item?.name === 'Sign out' ? logOut : null}
-                                            
-                                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                                        >
-                                            {item.name}
-                                        </Disclosure.Button>
-                                    ))} */}
                                     </div>
-                                </div>
+                                </div> :<Link
+                                    to="/signin"
+                                    className="ml-4 mb-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                                >
+                                    Sign in
+                                </Link>}
+                            </Disclosure.Panel>
+                            <Disclosure.Panel className="md:hidden">
+                               
                             </Disclosure.Panel>
                         </>
                     )}
