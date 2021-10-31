@@ -145,7 +145,7 @@ const AddedFeeback = () => {
                                                     {service.rating}
                                                 </span>
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{service.review}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{service.review.slice(0,20)}</td>
                                             <td className="px-6 py-4 whitespace-nowrap flex justify-center items-center">
 
 

@@ -20,11 +20,11 @@ const Dashboard = () => {
             <main>
                 <div className="container mx-auto">
                     <div className="grid md:grid-cols-4 col-span-1 gap-4">
-                        <div className="col-span-1 md:col-span-1">
-                            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                        <div className="col md:col-span-1">
+                            <div className=" mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
-                                    <div className="border-4 borderborder-gray-200 rounded-lg h-96">
+                                    <div className="border-4 borderborder-gray-200 rounded-lg h-auto">
                                         <div className="flex flex-col justify-center space-y-2">
                                             <button className={buttonStyle} onClick={() => setControl("myOrders")}>My orders</button>
                                             <button className={buttonStyle} onClick={() => setControl("allOrders")}>Manage All Orders</button>
@@ -38,11 +38,11 @@ const Dashboard = () => {
                                 {/* /End replace */}
                             </div>
                         </div>
-                        <div className="col-span-1 md:col-span-3">
-                            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                        <div className="col md:col-span-3">
+                            <div className="md:max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
-                                    <div className="border-4 border-dashed border-gray-200 rounded-lg h-auto bg-gray-100">
+                                    <div className="border-4 border-dashed border-gray-200 rounded-lg h-auto w-full bg-gray-100">
                                         {control === 'myOrders' && <MyOrders />}
                                         {control === 'allOrders' && <ManageAllOrders />}
                                         {control === 'newService' && <AddNewService />}

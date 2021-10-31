@@ -14,10 +14,10 @@ const Hero = () => {
 
                         <div className="flex flex-col justify-center items-center space-y-2">
                             <Fade left>
-                                <h1 className="poppins text-white font-extrabold text-8xl leading-relaxed">Muzaffar</h1>
+                                <h1 className="poppins text-white font-extrabold  text-4xl md:text-8xl leading-relaxed">Muzaffar</h1>
                             </Fade>
                             <Fade right>
-                                <p className="text-white text-light text-2xl"> Garden &amp; Resort </p>
+                                <p className="text-white text-light text-xl md:text-2xl"> Garden &amp; Resort </p>
                             </Fade>
                             <Fade bottom>
                                 <Link to="/service" className="mt-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700" >Explore our Service</Link>

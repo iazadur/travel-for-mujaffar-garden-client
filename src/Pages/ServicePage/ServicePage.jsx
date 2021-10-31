@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Heading from '../../Components/From/Heading';
 import Header from '../../Components/Header/Header';
+import Fade from 'react-reveal/Fade';
 
 const ServicePage = () => {
     const [services, setServices] = useState([])
@@ -18,10 +19,13 @@ const ServicePage = () => {
         <Header></Header>
         <div className="bg-white">
             <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <Fade bottom>
                 <Heading text="Our Services"/>
+                </Fade>
 
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {services.map((service) => (
+                        <Fade bottom>
                         <div key={service._id} className="group relative">
                             <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
                                 <img
@@ -43,6 +47,7 @@ const ServicePage = () => {
                                 <p className="text-sm font-medium ">{service.Price}</p>
                             </div>
                         </div>
+                        </Fade>
                     ))}
                 </div>
             </div>

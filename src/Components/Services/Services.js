@@ -8,6 +8,7 @@ import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import Heading from '../From/Heading';
+import Fade from 'react-reveal/Fade';
 
 
 import Service from './Service';
@@ -39,41 +40,43 @@ const Services = () => {
                     </div> :
                     <section className="max-w-screen-xl mx-auto px-6 py-6 pb-24">
                         {/* heading  */}
+                        
+                        <Fade>
                         <Heading text="Services" />
-
+                        </Fade>
                         {/* services  */}
-                        <Swiper
-                            className="mySwiper py-12"
-                            autoplay={{
-                                delay: 5000,
-                                disableOnInteraction: false
-                            }}
-                            pagination={true} grabCursor={true}
-                            slidesPerView={3}
-                            speed={400}
-                            spaceBetween={20}
-                            breakpoints={{
-                                500: {
-                                    slidesPerView: 1,
+            <Swiper
+                className="mySwiper py-12"
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false
+                }}
+                pagination={true} grabCursor={true}
+                slidesPerView={1}
+                speed={400}
+                spaceBetween={20}
+                breakpoints={{
+                    500: {
+                        slidesPerView: 1,
 
-                                },
-                                700: {
-                                    slidesPerView: 2
-                                },
-                                1024: {
-                                    slidesPerView: 3
-                                }
-                            }}
-                        >
-                            {services.map(service => (
-                                <SwiperSlide key={service._id}>
-                                    <Bounce left>
-                                        <Service  {...service} />
-                                    </Bounce>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </section>
+                    },
+                    700: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    }
+                }}
+            >
+                {services.map(service => (
+                    <SwiperSlide key={service._id}>
+                        <Bounce left>
+                            <Service  {...service} />
+                        </Bounce>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </section>
             }
 
         </>
