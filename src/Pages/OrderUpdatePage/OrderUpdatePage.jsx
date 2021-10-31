@@ -12,7 +12,7 @@ const OrderUpdatePage = () => {
         defaultValues: order,
     });
     const { id } = useParams()
-    const url = `http://localhost:5000/updateOrders/${id}`
+    const url = `https://ghastly-warlock-95280.herokuapp.com/updateOrders/${id}`
     useEffect(() => {
         axios.get(url)
             .then(res => {
@@ -26,7 +26,7 @@ const OrderUpdatePage = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/updateOrder/${id}`
+        const url = `https://ghastly-warlock-95280.herokuapp.com/updateOrder/${id}`
         axios.put(url, data)
             .then(res => {
                 if (res.data.modifiedCount > 0) {

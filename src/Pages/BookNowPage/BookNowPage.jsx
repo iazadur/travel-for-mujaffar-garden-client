@@ -11,14 +11,14 @@ const BookNowPage = () => {
     const { user } = useAuth()
     const [service, setService] = useState({})
     const { id } = useParams()
-    const url = `http://localhost:5000/bookNow/${id}`
+    const url = `https://ghastly-warlock-95280.herokuapp.com/bookNow/${id}`
     useEffect(() => {
         axios.get(url)
             .then(res => setService(res.data))
     }, [url])
     const { Title, Image, Description, btnColor, Price } = service
 
-    const { register, handleSubmit,reset } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         data.img = user.photoURL
         data.serviceName = Title
@@ -26,13 +26,13 @@ const BookNowPage = () => {
         data.serviceId = id
         data.status = false
         data.roll = false
-        axios.post('http://localhost:5000/addOrder',data)
-        .then(res=>{
-            if (res.data.insertedId) {
-                reset() 
-                swal("Good job!", "SuccessFully Confirm your order!", "success");
-            }
-        })
+        axios.post('https://ghastly-warlock-95280.herokuapp.com/addOrder', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    reset()
+                    swal("Good job!", "SuccessFully Confirm your order!", "success");
+                }
+            })
     };
 
     return (
@@ -170,9 +170,7 @@ const BookNowPage = () => {
                                         <button
                                             type="submit"
                                             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        >
-                                            Proceed to payment
-                                        </button>
+                                        >Proceed to payment</button>
                                     </div>
                                 </div>
                             </form>

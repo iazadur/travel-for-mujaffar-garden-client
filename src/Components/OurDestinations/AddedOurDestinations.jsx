@@ -7,16 +7,16 @@ import { AiOutlineDelete } from 'react-icons/ai';
 
 const AddedOurDestinations = () => {
     const [services, setServices] = useState([])
-    
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const url = 'http://localhost:5000/ourDestination'
+    const url = 'https://ghastly-warlock-95280.herokuapp.com/ourDestination'
     const onSubmit = data => {
         axios.post(url, data)
             .then((res) => {
                 if (res.data.insertedId) {
                     reset()
                     swal("Good job!", "Feedback Added successfully!", "success");
-                    axios.get('http://localhost:5000/destination')
+                    axios.get('https://ghastly-warlock-95280.herokuapp.com/destination')
                         .then(res => {
                             setServices(res.data)
                         })
@@ -28,7 +28,7 @@ const AddedOurDestinations = () => {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:5000/destination')
+        axios.get('https://ghastly-warlock-95280.herokuapp.com/destination')
             .then(res => {
                 setServices(res.data)
             })
@@ -43,7 +43,7 @@ const AddedOurDestinations = () => {
             dangerMode: true,
         })
             .then(() => {
-                axios.delete(`http://localhost:5000/destination/${id}`)
+                axios.delete(`https://ghastly-warlock-95280.herokuapp.com/destination/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             swal("Good job!", "deleted successfully!", "success");
@@ -56,7 +56,7 @@ const AddedOurDestinations = () => {
     return (
         <>
 
-            <Heading text="Added New Service"></Heading>
+            <Heading text="Added Our Destination"></Heading>
 
             <div>
                 <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -71,15 +71,15 @@ const AddedOurDestinations = () => {
                             {errors.Title?.type === 'required' && "Title is required"}
 
 
-                           
 
-                            <input {...register("rating", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Rating"  />
+
+                            <input {...register("rating", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Rating" />
 
                             <input {...register("ratUsers", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Total Rat Users" type="number" />
 
 
                             <select {...register("btnColor", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Price">
-                                
+
                                 <option value="#f76570" selected>Red</option>
                                 <option value="#ba71da">Blue</option>
                                 <option value="#14b9d5">Green</option>
@@ -138,7 +138,7 @@ const AddedOurDestinations = () => {
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {services.map((service) => (
-                                        <tr key={service.email}>
+                                        <tr key={service._id}>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
                                                     <div className="flex-shrink-0 h-10 w-10">

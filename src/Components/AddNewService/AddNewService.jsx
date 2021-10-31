@@ -14,14 +14,14 @@ const AddNewService = () => {
     //     "https://i.ibb.co/R4QCmz0/why-moon-11.png"
     // ]
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const url = 'http://localhost:5000/addService'
+    const url = 'https://ghastly-warlock-95280.herokuapp.com/addService'
     const onSubmit = data => {
         axios.post(url, data)
             .then((res) => {
                 if (res.data.insertedId) {
                     reset()
                     swal("Good job!", "deleted successfully!", "success");
-                    axios.get('http://localhost:5000/services')
+                    axios.get('https://ghastly-warlock-95280.herokuapp.com/services')
                         .then(res => {
                             setServices(res.data)
                         })
@@ -33,7 +33,7 @@ const AddNewService = () => {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:5000/services')
+        axios.get('https://ghastly-warlock-95280.herokuapp.com/services')
             .then(res => {
                 setServices(res.data)
             })
@@ -48,7 +48,7 @@ const AddNewService = () => {
             dangerMode: true,
         })
             .then(() => {
-                axios.delete(`http://localhost:5000/deleteService/${id}`)
+                axios.delete(`https://ghastly-warlock-95280.herokuapp.com/deleteService/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             swal("Good job!", "deleted successfully!", "success");
@@ -140,7 +140,7 @@ const AddNewService = () => {
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {services.map((service) => (
-                                        <tr key={service.email}>
+                                        <tr key={service._id}>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
                                                     <div className="flex-shrink-0 h-10 w-10">

@@ -97,7 +97,7 @@ const Header = () => {
 
 
                                                         <Menu.Item>
-                                                            <img className="h-20 w-20 my-2 rounded-full mx-auto" src={user.photoURL} alt="" />
+                                                            <img className="h-20 w-20 my-2 rounded-full mx-auto" src={user?.photoURL} alt="" />
                                                         </Menu.Item>
                                                         <Menu.Item>
                                                             <button className='block px-4  text-sm text-center w-full text-gray-700'>

@@ -6,18 +6,18 @@ import swal from 'sweetalert';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 const AddedFeeback = () => {
-    
+
     const [feedBack, setFeedback] = useState([])
-    
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const url = 'http://localhost:5000/feedBack'
+    const url = 'https://ghastly-warlock-95280.herokuapp.com/feedBack'
     const onSubmit = data => {
         axios.post(url, data)
             .then((res) => {
                 if (res.data.insertedId) {
                     reset()
                     swal("Good job!", "Feedback Added successfully!", "success");
-                    axios.get('http://localhost:5000/feedBack')
+                    axios.get('https://ghastly-warlock-95280.herokuapp.com/feedBack')
                         .then(res => {
                             setFeedback(res.data)
                         })
@@ -29,7 +29,7 @@ const AddedFeeback = () => {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:5000/feedBack')
+        axios.get('https://ghastly-warlock-95280.herokuapp.com/feedBack')
             .then(res => {
                 setFeedback(res.data)
             })
@@ -44,7 +44,7 @@ const AddedFeeback = () => {
             dangerMode: true,
         })
             .then(() => {
-                axios.delete(`http://localhost:5000/feedBack/${id}`)
+                axios.delete(`https://ghastly-warlock-95280.herokuapp.com/feedBack/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             swal("Good job!", "deleted successfully!", "success");
@@ -57,7 +57,7 @@ const AddedFeeback = () => {
     return (
         <>
 
-            <Heading text="Added New Service"></Heading>
+            <Heading text="Added FeedBack"></Heading>
 
             <div>
                 <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -68,13 +68,13 @@ const AddedFeeback = () => {
                             <input {...register("username", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Username" />
                             {errors.username?.type === 'required' && "Title is required"}
 
-                            <input {...register("rating", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Rating"  />
+                            <input {...register("rating", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Rating" />
                             {errors.rating?.type === 'required' && "Title is required"}
 
 
-                            <textarea {...register("review", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Total Rat Users"  />
+                            <textarea {...register("review", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Total Rat Users" />
                             {errors.review?.type === 'required' && "Title is required"}
-                            
+
 
                             <input {...register("img", { required: true })} className="w-3/6 mx-auto my-5 p-3 rounded-lg shadow-lg focus:outline-none focus:ring-pink-400 focus:ring-4" placeholder="Image Url" type="text" />
                             {errors.img && <span>This field is required</span>}
@@ -109,13 +109,13 @@ const AddedFeeback = () => {
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                             Rating
+                                            Rating
                                         </th>
                                         <th
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                           Review
+                                            Review
                                         </th>
                                         <th
                                             scope="col"
@@ -128,14 +128,14 @@ const AddedFeeback = () => {
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {feedBack.map((service) => (
-                                        <tr key={service.email}>
+                                        <tr key={service._id}>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
                                                     <div className="flex-shrink-0 h-10 w-10">
                                                         <img className="h-10 w-10 rounded-full" src={service.img} alt="" />
                                                     </div>
                                                     <div className="ml-4">
-                                                        <div className="text-sm font-medium text-gray-900">{service.user}</div>
+                                                        <div className="text-sm font-medium text-gray-900">{service.username}</div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -145,7 +145,7 @@ const AddedFeeback = () => {
                                                     {service.rating}
                                                 </span>
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{service.review.slice(0,20)}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{service.review.slice(0, 20)}..</td>
                                             <td className="px-6 py-4 whitespace-nowrap flex justify-center items-center">
 
 

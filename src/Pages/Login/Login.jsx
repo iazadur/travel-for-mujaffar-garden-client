@@ -3,7 +3,7 @@ import useAuth from '../../Hooks/useAuth'
 import { FcGoogle } from 'react-icons/fc';
 import { useHistory, useLocation } from 'react-router';
 import swal from 'sweetalert';
-import logo from '../../asserts/logos/Group 1329.png'
+import logo from '../../asserts/logo-color.png'
 import Header from '../../Components/Header/Header';
 
 

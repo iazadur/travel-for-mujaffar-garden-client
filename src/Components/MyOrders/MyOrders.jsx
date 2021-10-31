@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
-import {  AiOutlineDelete } from 'react-icons/ai'
+import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai'
 import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
+import PropLoader from '../PropLoader/PropLoader';
 
 const MyOrders = () => {
     const { user } = useAuth()
     const [orders, setOrders] = useState([])
-    const url = `http://localhost:5000/myOrders/${user.email}`
+    const url = `https://ghastly-warlock-95280.herokuapp.com/myOrders/${user.email}`
     useEffect(() => {
         axios.get(url)
             .then(res => {
@@ -15,31 +17,31 @@ const MyOrders = () => {
             })
     }, [url])
 
-    const handleDelete = (id) =>{
+    const handleDelete = (id) => {
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this Order!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          })
-        .then(() => {
-            axios.delete(`http://localhost:5000/orders/${id}`)
-            .then(res=>{
-                if (res.data.deletedCount > 0) {
-                    const remainingUsers = orders.filter(user => user._id !== id);
-                    setOrders(remainingUsers);
-                    swal("Good job!", "deleted successfully!", "success");
-                }
-            })
         })
-            
-           
-    }
-   
-     
+            .then(() => {
+                axios.delete(`https://ghastly-warlock-95280.herokuapp.com/orders/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            const remainingUsers = orders.filter(user => user._id !== id);
+                            setOrders(remainingUsers);
+                            swal("Good job!", "deleted successfully!", "success");
+                        }
+                    })
+            })
 
-   
+
+    }
+
+
+
+
     return (
         <>
             <div className="flex flex-col">
@@ -82,43 +84,50 @@ const MyOrders = () => {
 
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
-                                    {orders.map((order) => (
-                                        <tr key={order.email}>
-                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="flex items-center">
-                                                    <div className="flex-shrink-0 h-10 w-10">
-                                                        <img className="h-10 w-10 rounded-full" src={order.img} alt="" />
-                                                    </div>
-                                                    <div className="ml-4">
-                                                        <div className="text-sm font-medium text-gray-900">{order.name}</div>
-                                                        <div className="text-sm text-gray-500">{order.email}</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="text-sm text-gray-900">{order.serviceName}</div>
-                                                <div className="text-sm text-gray-500">$ {order.servicePrice}</div>
-                                            </td>
-                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    {order.status ? "active" : "pending"}
-                                                </span>
-                                            </td>
-                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="text-sm text-gray-500"><span className="text-base font-semibold">From:</span> {order.fromDate}</div>
-                                                <div className="text-sm text-gray-500"><span className="text-base font-semibold">To:</span> {order.toDate}</div>
-                                            </td>
-                                            <td className="px-6 py-4 whitespace-nowrap flex justify-center items-center">
+                                {
+                                    orders.length === 0 ?
+                                        <div className="text-center mt-24 h-screen ">
+                                            <PropLoader />
+                                        </div> :
+                                        <tbody className="bg-white divide-y divide-gray-200">
+                                            {orders.map((order) => (
+                                                <tr key={order._id}>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="flex items-center">
+                                                            <div className="flex-shrink-0 h-10 w-10">
+                                                                <img className="h-10 w-10 rounded-full" src={order.img} alt="" />
+                                                            </div>
+                                                            <div className="ml-4">
+                                                                <div className="text-sm font-medium text-gray-900">{order.name}</div>
+                                                                <div className="text-sm text-gray-500">{order.email}</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{order.serviceName}</div>
+                                                        <div className="text-sm text-gray-500">$ {order.servicePrice}</div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                            {order.status ? "active" : "pending"}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-500"><span className="text-base font-semibold">From:</span> {order.fromDate}</div>
+                                                        <div className="text-sm text-gray-500"><span className="text-base font-semibold">To:</span> {order.toDate}</div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap flex justify-center items-center">
 
-                                               
-                                                <AiOutlineDelete onClick={() => handleDelete(order._id)} className="text-red-600 cursor-pointer font-extrabold text-2xl hover:text-red-900 ml-3" />
+                                                        <Link to={`/orderDetails/${order._id}`}> <AiFillEdit className="text-indigo-600 font-extrabold text-2xl hover:text-indigo-900 ml-3" /></Link>
+                                                        <AiOutlineDelete onClick={() => handleDelete(order._id)} className="text-red-600 cursor-pointer font-extrabold text-2xl hover:text-red-900 ml-3" />
 
 
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                }
+
                             </table>
                         </div>
                     </div>
