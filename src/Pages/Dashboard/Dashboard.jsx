@@ -3,7 +3,8 @@ import AddNewService from '../../Components/AddNewService/AddNewService';
 import Header from '../../Components/Header/Header';
 import ManageAllOrders from '../../Components/ManageAllOrders/ManageAllOrders';
 import MyOrders from '../../Components/MyOrders/MyOrders';
-import AddWhyUs from '../../Components/WhyUs/AddWhyUs';
+import AddedOurDestinations from '../../Components/OurDestinations/AddedOurDestinations';
+import AddedFeeback from '../../Components/UserFeedBack/AddedFeeback';
 
 const Dashboard = () => {
     const [control, setControl] = useState("myOrders")
@@ -18,8 +19,8 @@ const Dashboard = () => {
             </header>
             <main>
                 <div className="container mx-auto">
-                    <div className="grid md:grid-cols-4 gap-4">
-                        <div className="col">
+                    <div className="grid md:grid-cols-4 col-span-1 gap-4">
+                        <div className="col-span-1 md:col-span-1">
                             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
@@ -28,7 +29,8 @@ const Dashboard = () => {
                                             <button className={buttonStyle} onClick={() => setControl("myOrders")}>My orders</button>
                                             <button className={buttonStyle} onClick={() => setControl("allOrders")}>Manage All Orders</button>
                                             <button className={buttonStyle} onClick={() => setControl("newService")}>Add New Service</button>
-                                            <button className={buttonStyle} onClick={() => setControl("AddWhyUs")}>Add Why Us</button>
+                                            <button className={buttonStyle} onClick={() => setControl("destination")}>Add New Destination</button>
+                                            <button className={buttonStyle} onClick={() => setControl("feedback")}>Add New FeedBack</button>
 
                                         </div>
                                     </div>
@@ -36,7 +38,7 @@ const Dashboard = () => {
                                 {/* /End replace */}
                             </div>
                         </div>
-                        <div className="md:col-span-3">
+                        <div className="col-span-1 md:col-span-3">
                             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                                 {/* Replace with your content */}
                                 <div className="px-4 py-6 sm:px-0">
@@ -44,7 +46,8 @@ const Dashboard = () => {
                                         {control === 'myOrders' && <MyOrders />}
                                         {control === 'allOrders' && <ManageAllOrders />}
                                         {control === 'newService' && <AddNewService />}
-                                        {control === 'AddWhyUs' && <AddWhyUs />}
+                                        {control === 'destination' && <AddedOurDestinations />}
+                                        {control === 'feedback' && <AddedFeeback />}
                                     </div>
                                 </div>
                                 {/* /End replace */}

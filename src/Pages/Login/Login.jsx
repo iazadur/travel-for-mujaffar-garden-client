@@ -19,7 +19,7 @@ const Login = () => {
                 setUser(result.user)
                 setError('')
                 history.push(redirect_uri)
-                swal("Good job!", "Account has been created!", "success");
+                swal("Good job!", "LogIn Account Successfully!", "success");
                 console.log(result.user);
             })
             .catch(error => {

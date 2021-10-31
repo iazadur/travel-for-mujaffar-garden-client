@@ -64,7 +64,7 @@ const Header = () => {
                                                 > Service</Link>
 
                                                 <Link
-                                                    to="/service"
+                                                    to="/about"
                                                     className={window.location.pathname === '/about' ? 'bg-gray-900 text-gray-300 rounded-md text-sm font-medium px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"}
                                                 > About</Link>
                                             </div>

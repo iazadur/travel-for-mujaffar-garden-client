@@ -12,6 +12,7 @@ import ServicePage from './Pages/ServicePage/ServicePage';
 import BookNowPage from './Pages/BookNowPage/BookNowPage';
 import OrderUpdatePage from './Pages/OrderUpdatePage/OrderUpdatePage';
 import NotFound from './Pages/NotFound/NotFound';
+import About from './Pages/About/About';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Switch>
           <Route exact path="/"><Home></Home></Route>
           <Route exact path="/service"><ServicePage></ServicePage></Route>
+          <Route exact path="/about"><About></About></Route>
           <PublicRoute path="/signin"><Login /></PublicRoute>
           <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute>
           <PrivateRoute path="/bookNow/:id"><BookNowPage /></PrivateRoute>

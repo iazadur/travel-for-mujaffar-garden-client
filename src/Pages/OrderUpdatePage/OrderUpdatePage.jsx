@@ -8,7 +8,7 @@ import Header from '../../Components/Header/Header';
 
 const OrderUpdatePage = () => {
     const [order, setOrder] = useState({})
-    const { register, handleSubmit,reset } = useForm({
+    const { register, handleSubmit, reset } = useForm({
         defaultValues: order,
     });
     const { id } = useParams()
@@ -19,11 +19,11 @@ const OrderUpdatePage = () => {
                 setOrder(res.data)
                 reset(res.data)
             })
-            
-    }, [reset,url])
+
+    }, [reset, url])
     const { serviceName, status, servicePrice } = order
 
-    
+
     const onSubmit = data => {
         console.log(data);
         const url = `http://localhost:5000/updateOrder/${id}`
@@ -177,7 +177,7 @@ const OrderUpdatePage = () => {
                                             type="submit"
                                             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                         >
-                                            Proceed to payment
+                                            Update
                                         </button>
                                     </div>
                                 </div>
