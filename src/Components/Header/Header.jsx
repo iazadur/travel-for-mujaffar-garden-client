@@ -4,9 +4,11 @@ import { Menu, Transition } from '@headlessui/react'
 import { FaAlignRight } from 'react-icons/fa';
 import { AiOutlineClose, AiOutlineBell } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import logo from '../../asserts/logos/Group 1329.png'
+import logo from '../../asserts/logo-color.png'
 import useAuth from '../../Hooks/useAuth';
 import { Disclosure } from '@headlessui/react'
+import { GrLogout } from 'react-icons/gr'
+import { MdOutlineDashboard } from 'react-icons/md'
 
 
 
@@ -14,28 +16,17 @@ const Header = () => {
     const { logOut, user } = useAuth()
 
     const navigation = [
-        { name: 'Dashboard', href: '/dashboard', current: true },
-        { name: 'Service', href: '/service', current: false },
-        { name: 'Rooms', href: '/room', current: false },
-        { name: 'Contact', href: '/contact', current: false },
+        { name: 'dashboard' },
+        { name: 'service'},
+        { name: 'about'},
 
     ]
 
 
-    function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
-    }
-
+    
     return (
         <>
-            {/*
-        This example requires updating your template:
 
-        ```
-        <html className="h-full bg-gray-100">
-        <body className="h-full">
-        ```
-      */}
             <div className="min-h-full">
                 <Disclosure as="nav" className="bg-gray-100">
                     {({ open }) => (
@@ -54,28 +45,35 @@ const Header = () => {
                                         </div>
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
-                                                {navigation.map((item) => (
-                                                    <Link
-                                                        key={item.name}
-                                                        to={item.href}
-                                                        className={classNames(
-                                                            item.current
-                                                                ? 'bg-gray-900 text-white'
-                                                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                            'px-3 py-2 rounded-md text-sm font-medium'
-                                                        )}
-                                                        aria-current={item.current ? 'page' : undefined}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                ))}
+
+
+                                                <Link
+                                                    to="/"
+                                                    className={window.location.pathname === '/' ? 'bg-gray-900 text-gray-300 rounded-md text-sm font-medium px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"}
+                                                > Home</Link>
+
+                                                {user.email && <Link
+                                                    to="/dashboard"
+                                                    className={window.location.pathname === '/dashboard' ? 'bg-gray-900 text-gray-300 rounded-md text-sm font-medium px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"}
+
+                                                >Dashboard</Link>}
+
+                                                <Link
+                                                    to="/service"
+                                                    className={window.location.pathname === '/service' ? 'bg-gray-900 text-gray-300 rounded-md text-sm font-medium px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"}
+                                                > Service</Link>
+
+                                                <Link
+                                                    to="/service"
+                                                    className={window.location.pathname === '/service' ? 'bg-gray-900 text-gray-300 rounded-md text-sm font-medium px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"}
+                                                > About</Link>
                                             </div>
 
 
 
                                         </div>
                                     </div>
-                                    <div className="hidden md:block">
+                                    <div className="hidden md:block z-30">
                                         <div className="ml-4 flex items-center md:ml-6">
 
 
@@ -95,43 +93,40 @@ const Header = () => {
                                                     leaveFrom="transform opacity-100 scale-100"
                                                     leaveTo="transform opacity-0 scale-95"
                                                 >
-                                                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                        {/* {userNavigation.map((item) => (
-                                                                    <Menu.Item key={item.name}>
-                                                                        {({ active }) => (
-                                                                            <a
-                                                                                href={item.href}
-                                                                                className={classNames(
-                                                                                    active ? 'bg-gray-100' : '',
-                                                                                    'block px-4 py-2 text-sm text-gray-700'
-                                                                                )}
-                                                                            >
-                                                                                {item.name}
-                                                                            </a>
-                                                                        )}
-                                                                    </Menu.Item>
-                                                                ))} */}
+                                                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-60 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+
 
                                                         <Menu.Item>
-                                                            <button className='block px-4 py-2 text-sm text-gray-700'>
+                                                            <img className="h-20 w-20 my-2 rounded-full mx-auto" src={user.photoURL} alt="" />
+                                                        </Menu.Item>
+                                                        <Menu.Item>
+                                                            <button className='block px-4  text-sm text-center w-full text-gray-700'>
                                                                 {user.displayName}
                                                             </button>
                                                         </Menu.Item>
 
                                                         <Menu.Item>
-                                                            <button className='block px-4 py-2 text-sm text-gray-700'>
+                                                            <button className='block px-4 py-1 text-sm text-center w-full text-gray-700'>
                                                                 {user.email}
                                                             </button>
                                                         </Menu.Item>
+                                                        <hr />
 
+                                                        <Menu.Item>
+                                                            <Link
+                                                                to="/dashboard"
+                                                                className='flex items-center px-4 py-2 text-sm text-gray-700'>
+                                                                <MdOutlineDashboard className="mr-2" />My Orders
+                                                            </Link>
+                                                        </Menu.Item>
                                                         <Menu.Item>
                                                             <button
                                                                 onClick={logOut}
-                                                                className='block px-4 py-2 text-sm text-gray-700'>
-                                                                Sign Out
+                                                                className='flex items-center px-4 py-2 text-sm text-gray-700'>
+                                                                <GrLogout className="mr-2" />Sign Out
                                                             </button>
                                                         </Menu.Item>
-                                                        
+
                                                     </Menu.Items>
                                                 </Transition>
                                             </Menu>
@@ -174,21 +169,25 @@ const Header = () => {
                             </div>
 
                             <Disclosure.Panel className="md:hidden">
-                                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                                <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
                                     {navigation.map((item) => (
-                                        <Disclosure.Button
-                                            key={item.name}
-                                            as="a"
-                                            href={item.href}
-                                            className={classNames(
-                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                'block px-3 py-2 rounded-md text-base font-medium'
-                                            )}
-                                            aria-current={item.current ? 'page' : undefined}
-                                        >
-                                            {item.name}
+                                         <Disclosure.Button
+                                         key={item.name}
+                                         className="block rounded-md text-base font-medium capitalize"
+                                         >
+
+                                        <Link
+                                            to={`/${item.name}`}
+                                            className={
+                                                window.location.pathname === `/${item.name}` ? 'bg-gray-900 text-gray-300 rounded-md px-3 py-2' : " hover:text-white  hover:bg-gray-700 px-3 py-2 rounded-md  "
+
+                                            }
+
+                                        >{item.name}</Link>
                                         </Disclosure.Button>
                                     ))}
+
+                                    
                                 </div>
                                 <div className="pt-4 pb-3 border-t border-gray-700">
                                     <div className="flex items-center px-5">

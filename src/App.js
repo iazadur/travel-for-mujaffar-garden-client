@@ -24,6 +24,7 @@ const App = () => {
           <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute>
           <PrivateRoute path="/bookNow/:id"><BookNowPage /></PrivateRoute>
           <PrivateRoute path="/orderDetails/:id"><OrderUpdatePage /></PrivateRoute>
+          <Route path="*"><NotFound /></Route> 
 
             {/* <Route exact path="/"><HomeScreen /></Route>
             <Route exact path="/contact"><ContactScreen /></Route>

@@ -5,7 +5,7 @@ const Service = (props) => {
     const { _id,Title, Price, Description, btnColor, Image } = props;
     return (
         <div className="space-y-3 bg-white border border-gray-200 hover:shadow-xl transition duration-700 ease-in-out transform hover:scale-105 box-border rounded-xl my-16">
-            <img className="w-full" src={Image} alt={Title} />
+            <img className="w-full h-64" src={Image} alt={Title} />
             <div className="space-y-3 p-4 divide-y divide-indigo-200 ">
                 <h1 className="text-gray-600 poppins text-xl">{Title}</h1>
 
