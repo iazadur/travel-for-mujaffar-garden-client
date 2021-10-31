@@ -1,0 +1,137 @@
+[
+    {
+        "feedBack": [
+            {
+                "_id": "617e36291029d6aa850047ed",
+                "username": "Arafat",
+                "rating": "4",
+                "review": "I have visited one of the best resort in Bangladesh.The environment was fantastic.We enjoyed here lot.Staff ware very friendly.They have nice natural swimming pool and we enjoyed a movie at Cineplex it was amazing .Sound system and projection was very good.We got a very welcome reception and all of the services.We recommended to come hare and we will come hare again.",
+                "img": "https://i.ibb.co/Php9bbh/arafat.jpg"
+            },
+            {
+                "_id": "617e36891029d6aa850047ee",
+                "username": "Zahid",
+                "rating": "4.4",
+                "review": "First Of All I Want Thanks My Wife To Choice Mozaffar resort. It was amazing and I didn't feel like leaving the day of departure. I wanted to stay there for few more days but had to come back got no choice the few things , I liked about Mozaffar is clean and tidy everywhere you look all you see is green it's natural. I loved it and the food quality so far good and restaurant waiter are okay .I loved their services but i think they need some level of training I guess.  I loved it . Thanks to Mozaffar garden & resort team for there outstanding services.we will see you again.",
+                "img": "https://i.ibb.co/5s5P3J2/zahid.jpg"
+            },
+            {
+                "_id": "617e36bc1029d6aa850047ef",
+                "username": "Zunayed",
+                "rating": "3.5",
+                "review": "Mozaffar Garden & Resort is the best place in Khulna Division. In which Honeymoon cottage floating on water bring to you the Dreamland !",
+                "img": "https://i.ibb.co/RP5b1wm/zunayed.jpg"
+            },
+            {
+                "_id": "617e37111029d6aa850047f0",
+                "username": "iazadur",
+                "rating": "4.2",
+                "review": "What a beautiful natural resort! We are surprised to see the natural beauty of this resort. Full resorts are surrounded by different types of trees and flowers. The staff ware very good and the service was excellent. Accommodation and facilities are world-class...",
+                "img": "https://i.ibb.co/QMQ7K1x/azad.jpg"
+            }
+        ],
+        "destination": [
+            {
+                "_id": "617e30171029d6aa850047e5",
+                "title": "Mandarbaria beach",
+                "tag": "Beach",
+                "rating": "3.9",
+                "ratUsers": "16",
+                "btnColor": "#f76570",
+                "img": "https://i.ibb.co/16JtSFv/Mandarbaria-beach.jpg"
+            },
+            {
+                "_id": "617e30611029d6aa850047e6",
+                "title": "Ishwaripur Hammam Khana",
+                "tag": "zoo",
+                "rating": "4.4",
+                "ratUsers": "198",
+                "btnColor": "#ba71da",
+                "img": "https://i.ibb.co/Fm0fNGf/Ishwaripur-Hammam-Khana.jpg"
+            },
+            {
+                "_id": "617e31461029d6aa850047e8",
+                "title": "Ruposhi Mangrove Park",
+                "tag": "Park and garden",
+                "rating": "4.4",
+                "ratUsers": "198",
+                "btnColor": "#14b9d5",
+                "img": "https://i.ibb.co/zXNrWkp/Ruposhi-Mangrove-Park.jpg"
+            }
+        ],
+        "services": [
+            {
+                "_id": "617bd34baefb2e447100f2e2",
+                "Title": "VIP SUIT ROOM",
+                "Description": "Our VIP room is designed with class and comfort to offer top standard accommodation to those seeking bigger space, king size bed, affordable luxury an...",
+                "Price": "9200",
+                "btnColor": "#ffd205",
+                "Image": "http://www.mozaffar-resort.com/uploads/Vip_12.JPG"
+            },
+            {
+                "_id": "617c35b8ec33142117c3db52",
+                "Title": "VIP PICNIC SPOT",
+                "Description": "Almost 100 people can sit idly eat here together,two restroom, two  bathroom. There is a good arrangement for sitting in the Place.",
+                "Price": "3000",
+                "btnColor": "#1bbc9b",
+                "Image": "https://i.ibb.co/6snbfNt/Picnic-spot-2017.png"
+            },
+            {
+                "_id": "617c35f3ec33142117c3db53",
+                "Title": "AUDITORIUM",
+                "Description": "The Super Deluxe Seminar Hall, the main auditorium, in a theater-style setting, can comfortably accommodate 250-300 persons. It is fully air-conditi",
+                "Price": "25000",
+                "btnColor": "#f76570",
+                "Image": "https://i.ibb.co/B2pPsCn/supper-delux-seminar.png"
+            },
+            {
+                "_id": "617c3734ec33142117c3db54",
+                "Title": "FRIENDLY & PROFESSIONAL STAFF",
+                "Description": "Donec condimentum id erat a molestie. In luctus quis risus cursus faucibus. Pellentesque ornare dui cursus ex dictum, eget porttitor est iaculis. Quis",
+                "Price": "4499",
+                "btnColor": "#ba71da",
+                "Image": "https://i.ibb.co/rwHgywv/why-moon-11-1.png"
+            },
+            {
+                "_id": "617c37acec33142117c3db55",
+                "Title": "SEMINAR HALL",
+                "Description": "Donec condimentum id erat a molestie. In luctus quis risus cursus faucibus. Pellentesque ornare dui cursus ex dictum, eget porttitor est iaculis. Quis",
+                "Price": "90400",
+                "btnColor": "#ba71da",
+                "Image": "https://i.ibb.co/dfBC5Zs/why-moon-3-2.png"
+            },
+            {
+                "_id": "617c383cec33142117c3db56",
+                "Title": "LUXURY ROOMS",
+                "Description": "Donec condimentum id erat a molestie. In luctus quis risus cursus faucibus. Pellentesque ornare dui cursus ex dictum, eget porttitor est iaculis. Quis",
+                "Price": "3000",
+                "btnColor": "#ba71da",
+                "Image": "https://i.ibb.co/gtRFJM6/AC-SUPER-DELUXE-Room-Rate-4600.png"
+            },
+            {
+                "_id": "617c3b69ec33142117c3db57",
+                "Title": "MINI ZOO",
+                "Description": "This little gate of Zoo may not make you interested to go inside but once you in you will be surprised. The collection of birds and animals are really.",
+                "Price": "100",
+                "btnColor": "#f76570",
+                "Image": "https://i.ibb.co/s2qNjMY/zoo1.png"
+            },
+            {
+                "_id": "617c3b95ec33142117c3db58",
+                "Title": "BOAT RIDE",
+                "Description": "Boat Ride in Mozaffar garden and resort is so much pleasant and wonderful",
+                "Price": "40",
+                "btnColor": "#ba71da",
+                "Image": "https://i.ibb.co/MNMdMc6/Boat.png"
+            },
+            {
+                "_id": "617c3c6fec33142117c3db59",
+                "Title": "NATURAL SWIMMING POOL",
+                "Description": "A natural swimming pool or natural swimming pond (NSP) is a system consisting of a constructed body of water, where the water is contained by an isola",
+                "Price": "5000",
+                "btnColor": "#14b9d5",
+                "Image": "https://i.ibb.co/VNb84Fd/Vip-12.png"
+            }
+        ]
+    }
+]

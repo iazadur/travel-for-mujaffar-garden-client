@@ -1,7 +1,33 @@
 
+# Travel For Mujaffar Garden
+### (Assignment - 11)
+
+##### Live Server: [Mujaffar Garden](https://muzaffar-garden.web.app/dashboard)
 
 
+## Features
 
+    ▶ The MERN Stack Project
+    ▶ Sign in with Google Account with pop up success/error message
+    ▶ Using spinner when user login and get data from database
+    ▶ Buy/Book Our Service and get my orders 
+    ▶ You don't login can't access service
+    ▶ Admin are access all data from dashboard(update,delete,insert) any order service or section
+    ▶ Admin can approved, Pending order status set Active Status
+
+    
+## Technology
+
+    ▶ React
+    ▶ Mongodb
+    ▶ Express
+    ▶ Node 
+    ▶ Tailwindcss
+    ▶ React hook form
+    ▶ Firebase
+    ▶ Heroku
+    ▶ Context Api
+    ▶ Private Routing with react router
 
 
 
