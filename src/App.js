@@ -11,6 +11,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import ServicePage from './Pages/ServicePage/ServicePage';
 import BookNowPage from './Pages/BookNowPage/BookNowPage';
 import OrderUpdatePage from './Pages/OrderUpdatePage/OrderUpdatePage';
+import NotFound from './Pages/NotFound/NotFound';
 
 const App = () => {
   return (
