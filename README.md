@@ -2,7 +2,9 @@
 # Travel For Mujaffar Garden
 ### (Assignment - 11)
 
-##### Live Server: [Mujaffar Garden](https://muzaffar-garden.web.app/dashboard)
+##### Live Server: [Mujaffar Garden](https://muzaffar-garden.web.app)
+##### Client: [Mujaffar Garden Client](https://github.com/iazadur/travel-for-mujaffar-garden-client)
+##### Server: [Mujaffar Garden Server](https://github.com/iazadur/travel-for-mujaffar-garden-server)
 
 
 ## Features
